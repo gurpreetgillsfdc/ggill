@@ -1,0 +1,29 @@
+<template>
+    <lightning-layout>
+       <lightning-layout-item flexibility="auto" padding="horizontal-medium" style="width:50%;">
+         <c-add-contact onaddcontact={addContactHandler}></c-add-contact>
+       </lightning-layout-item>
+       
+       <lightning-layout-item flexibility="auto" padding="horizontal-medium" style="width:50%;">
+           <lightning-card title="List of Contact Records" icon-name="standard:groups" if:true={conList.data}>
+              <template for:each={conList.data} for:item="con">
+                    <c-contact-list key={con.Id} contact={con} onselected={handleSelectedContact}></c-contact-list>
+              </template> 
+              <template if:true={conList.error}>
+               <div>no data available</div>>
+          </template> 
+             
+           </lightning-card>      
+      </lightning-layout-item>
+
+      <lightning-layout-item flexibility="auto" padding="horizontal-medium" style="width:50%;">
+      <lightning-card icon-name="standard:contact" if:true={selectedContact} >
+        <p class="slds-truncate">Name : {selectedContact.Name}</p>
+        <p class="slds-truncate">Email : {selectedContact.Email}</p>
+        <p class="slds-truncate">Phone No : {selectedContact.Phone}</p>
+
+      </lightning-card>
+      </lightning-layout-item>
+
+    </lightning-layout>
+</template>
