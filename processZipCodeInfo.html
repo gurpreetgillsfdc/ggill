@@ -1,0 +1,52 @@
+<template>
+    <lightning-card title="How to make a Callout using LWC ">
+<div  style='width:200px;'>
+<lightning-input class="zipCode"  label="Enter Zip Code : " placeholder="Enter valid US ZipCode only" value={zipCodeValue}></lightning-input>
+</div>
+<lightning-button label="Submit" onclick={handleBtnClick} ></lightning-button>
+
+<div if:true={isLoaded} class="slds-is-relative">
+  <lightning-spinner
+      alternative-text="Loading..." variant="brand">
+  </lightning-spinner>
+</div>
+
+<template if:true={noZipFound}>
+  <div class="slds-notify slds-notify_alert" role="alert">No Data Available</div>
+  </template>
+
+<template if:true={showSummaryDetail}>
+      <table class="myTable">
+        <tbody><tr>
+            <td><b>Country </b></td>
+            <td>{country}</td>
+        </tr>
+        <tr>
+            <td><b>Country Abbrevation </b></td>
+            <td>{countryAbbr}</td>
+        </tr>
+        <tr>
+            <td><b>Latitude </b> </td>
+            <td>{latitude}</td>
+        </tr>
+        <tr>
+            <td><b>Longitude </b></td>
+            <td>{longitude}</td>
+        </tr>
+        <tr>
+            <td><b>Place Name </b></td>
+            <td>{placename}</td>
+        </tr>
+        <tr>
+            <td><b>State </b></td>
+            <td>{state}</td>
+        </tr>
+        <tr>
+            <td><b>State Abbrevation</b></td>
+            <td>{stateAbbr}</td>
+        </tr>    
+    </tbody></table>             
+</template>
+</lightning-card>
+    
+</template>
